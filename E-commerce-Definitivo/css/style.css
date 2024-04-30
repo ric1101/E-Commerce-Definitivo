@@ -8,3 +8,18 @@
 .navbar {
     height: 80px;
 }
+
+.carousel-item {
+    height: calc(100vh - 80px);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card {
+    margin: 1rem;
+}
+
+.container-card {
+    align-items: center;
+}
