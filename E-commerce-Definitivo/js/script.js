@@ -28,4 +28,8 @@ var swiper3 = new Swiper(".mySwiper3", {
   },
 });
 
+const URL = "https://dummyjson.com/products";
+
+
+
 
