@@ -1,35 +1,36 @@
 let arrayProdotti = [];
 const URLProdotti = "https://dummyjson.com/products";
 
-async function ottieniDati() {
-    await fetch(URLProdotti)
-    .then(data => {
-        return data.json()
-    })
-    .then(response => {
-        console.log(response);
+function ottieniDati() {
+    fetch(URLProdotti)
+        .then(res => res.json())
+        .then(data => {
+            creaProdotto(data.products);
+            console.log(data.products);
+        })
 
-        creaProdotto(response);
-    })
 }
 ottieniDati();
 
+function creaProdotto(products) {
+    let container = document.querySelector('.container-card');
 
-let cardProdotto = document.querySelector('#container-card');
+    products.forEach(product => {
+        let card = document.createElement('div');
+        card.classList.add('card', 'col-lg-3', 'col-md-6');
 
-async function creaProdotto(product) {
-    await product.forEach(prodotto => {
-        
-        let card = `<div class="card col-lg-2">
-            <img src="${prodotto.images}" class="card-img-top" alt="cat">
+        card.innerHTML = `
+            <img src="${product.images[1]}" class="card-img-top" alt="${product.title}">
             <div class="card-body">
-                <div class="card-title fs-5">${prodotto.title}</div>
-                <p class="card-text">${prodotto.description}</p>
-                <a href="#" class="btn btn-primary">
-                    <i class="bi bi-cart-plus"></i>
-                    Aggiungi al Carrello</a>
-            </div>`;
-            cardProdotto.innerHTML += card;
-    });
+                <h5 class="card-title">${product.title}</h5>
+                <p class="card-text">Prezzo: ${product.price} € </p>
+                <p class="card-text">${product.description}</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary add-to-cart" data-name="${product.title}" data-price="${product.price}">Aggiungi al carrello</button>
+            </div>
+        `;
 
+        container.appendChild(card);
+    });
 }
