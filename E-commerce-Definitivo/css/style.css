@@ -20,3 +20,9 @@
     margin: 1rem;
 }
 
+.imgProd {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+}

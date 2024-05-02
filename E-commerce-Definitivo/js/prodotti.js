@@ -13,14 +13,17 @@ function ottieniDati() {
 ottieniDati();
 
 function creaProdotto(products) {
-    let container = document.querySelector('.container-card');
+    let container = document.querySelector('#prodottiP');
 
     products.forEach(product => {
-        let card = document.createElement('div');
-        card.classList.add('card', 'col-lg-3', 'col-md-6');
+        /*let card = document.createElement('div');
+        card.classList.add('card', 'col-lg-3', 'col-md-6');*/
 
-        card.innerHTML = `
-            <img src="${product.images[1]}" class="card-img-top" alt="${product.title}">
+
+        container.innerHTML += `<div class="col-md-6 col-lg-4 col-xl-3 mb-4">
+        <div class="card h-100">
+        <div style="background-image: url(${product.images[0]})" class="imgProd">
+        </div>
             <div class="card-body">
                 <h5 class="card-title">${product.title}</h5>
                 <p class="card-text">Prezzo: ${product.price} € </p>
@@ -29,8 +32,8 @@ function creaProdotto(products) {
             <div class="card-footer">
                 <button class="btn btn-primary add-to-cart" data-name="${product.title}" data-price="${product.price}">Aggiungi al carrello</button>
             </div>
-        `;
-
-        container.appendChild(card);
+        </div>
+        </div>
+    `;
     });
 }
