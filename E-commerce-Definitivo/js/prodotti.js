@@ -56,65 +56,63 @@ let btnFiltri = document.querySelectorAll('.btnFiltro');
 btnFiltri.forEach(btn => {
     btn.addEventListener('click', function () {
         btnOnOff.call(this);
+        filtro(this.dataset.categoria);
     });
 });
 
 
 function filtro(categoria) {
-    
     let arrayProd = document.querySelectorAll('.nuovoProdotto');
     arrayProd.forEach(element => {
-        if (element.getAttribute("data-categoria") == categoria) {
+        if (!categoria || element.getAttribute("data-categoria") === categoria) {
+            element.classList.remove('d-none');
             element.classList.add('d-block');
         } else {
+            element.classList.remove('d-block');
             element.classList.add('d-none');
-        } 
-    
+        }
     });
-
 }
 
+
 let buttonAll = document.querySelector('.all');
-let buttonSmartphones = document.querySelector('.smartphones');
-let buttonLaptop = document.querySelector('.laptop');
-let buttonFragrances = document.querySelector('.fragrances');
-let buttonSkincare = document.querySelector('.skincare');
-let buttonGroceries = document.querySelector('.groceries');
-let buttonHomeDecoration = document.querySelector('.home-decoration');
-
-buttonSmartphones.addEventListener('click', function () {
-    filtro("smartphones");
-    btnOnOff();
-});
-
-buttonLaptop.addEventListener('click', function () {
-    filtro("laptop");
-    btnOnOff();
-});
-
-buttonFragrances.addEventListener('click', function () {
-    filtro("fragrances");
-    btnOnOff();
-});
-
-buttonSkincare.addEventListener('click', function () {
-    filtro("skincare");
-    btnOnOff();
-});
-
-buttonGroceries.addEventListener('click', function () {
-    filtro();
-    btnOnOff();
-});
-
-buttonHomeDecoration.addEventListener('click', function () {
-    filtro();
-    btnOnOff();
-});
-
 buttonAll.addEventListener('click', function () {
+    btnOnOff.call(this);
     filtro();
-    btnOnOff();
 });
 
+let buttonSmartphones = document.querySelector('.smartphones');
+buttonSmartphones.addEventListener('click', function () {
+    btnOnOff.call(this);
+    filtro("smartphones");
+});
 
+let buttonLaptop = document.querySelector('.laptop');
+buttonLaptop.addEventListener('click', function () {
+    btnOnOff.call(this);
+    filtro("laptop");
+});
+
+let buttonFragrances = document.querySelector('.fragrances');
+buttonFragrances.addEventListener('click', function () {
+    btnOnOff.call(this);
+    filtro("fragrances");
+});
+
+let buttonSkincare = document.querySelector('.skincare');
+buttonSkincare.addEventListener('click', function () {
+    btnOnOff.call(this);
+    filtro("skincare");
+});
+
+let buttonGroceries = document.querySelector('.groceries');
+buttonGroceries.addEventListener('click', function () {
+    btnOnOff.call(this);
+    filtro("groceries");
+});
+
+let buttonHomeDecoration = document.querySelector('.home-decoration');
+buttonHomeDecoration.addEventListener('click', function () {
+    btnOnOff.call(this);
+    filtro("home-decoration");
+});

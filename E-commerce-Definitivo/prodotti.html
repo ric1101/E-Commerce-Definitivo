@@ -22,50 +22,56 @@
 
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-          <div class="container-fluid">
-            <a href="index.html"><img src="./amazone-30-4-2024.png" alt="Logo" width="180" height="auto"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="./index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="./prodotti.html">Prodotti</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./carrello.html"><i class="fa-solid fa-cart-shopping"></i></a>
-                </li>
-              </ul>
+            <div class="container-fluid">
+                <a href="index.html"><img src="./amazone-30-4-2024.png" alt="Logo" width="180" height="auto"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./prodotti.html">Prodotti</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./carrello.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
         </nav>
-      </header>
-    <div class="prodottiTitolo text-center p-3"><h1>Tutti i prodotti</h1></div>
+    </header>
+    <div class="prodottiTitolo text-center p-3">
+        <h1>Tutti i prodotti</h1>
+    </div>
     <div class="filtroProdotti text-center p-3">
         <div class="container">
             <div class="buttons">
                 <h2><b>Scegli Filtro:</b></h2>
-                <button class="all btnFiltro btn btn-primary" id="all">All</button>
-                <button class="smartphones btnFiltro btn btn-outline-primary" id="buttonSmartphones">Smartphones</button>
-                <button class="laptops btnFiltro btn btn-outline-primary">Laptops</button>
-                <button class="fragrances btnFiltro btn btn-outline-primary">Fragrances</button>
-                <button class="skincare btnFiltro btn btn-outline-primary">Skincare</button>
-                <button class="groceries btnFiltro btn btn-outline-primary">Groceries</button>
-                <button class="home-decoration btnFiltro btn btn-outline-primary">Home Decoration</button>
+                <button class="all btnFiltro btn btn-primary" data-categoria="">All</button>
+                <button class="smartphones btnFiltro btn btn-outline-primary"
+                    data-categoria="smartphones">Smartphones</button>
+                <button class="laptops btnFiltro btn btn-outline-primary" data-categoria="laptops">Laptops</button>
+                <button class="fragrances btnFiltro btn btn-outline-primary"
+                    data-categoria="fragrances">Fragrances</button>
+                <button class="skincare btnFiltro btn btn-outline-primary" data-categoria="skincare">Skincare</button>
+                <button class="groceries btnFiltro btn btn-outline-primary"
+                    data-categoria="groceries">Groceries</button>
+                <button class="home-decoration btnFiltro btn btn-outline-primary" data-categoria="home-decoration">Home
+                    Decoration</button>
             </div>
         </div>
     </div>
-      
+
     <div class="container">
         <div class="row" id="prodottiP">
 
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
