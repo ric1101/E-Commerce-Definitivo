@@ -6,7 +6,6 @@ function ottieniDati() {
         .then(res => res.json())
         .then(data => {
             creaProdotto(data.products);
-            smartphone(data.products);
             console.log(data.products);
         })
 
@@ -21,7 +20,7 @@ function creaProdotto(products) {
         card.classList.add('card', 'col-lg-3', 'col-md-6');*/
 
 
-        container.innerHTML += `<div class="col-md-6 col-lg-4 col-xl-3 mb-4">
+        container.innerHTML += `<div class="nuovoProdotto col-md-6 col-lg-4 col-xl-3 mb-4" data-categoria="${product.category}">
         <div class="card h-100">
         <div style="background-image: url(${product.images[0]})" class="imgProd">
         </div>
@@ -39,16 +38,35 @@ function creaProdotto(products) {
     });
 }
 
-
-function smartphone(products) {
-    fetch('https://dummyjson.com/products/category/smartphones')
-    .then(res => res.json())
-    .then(console.log);
+function btnOnOff() {
     
+    let btnFiltri = document.querySelectorAll('.btnFiltro');
+    btnFiltri.forEach(btn => {
+        if (btn.classList.contains("btn-primary")) {
+            btn.classList.remove('btn-primary');
+            btn.classList.add('btn-outline-primary');
+        } else {
+            btn.classList.remove('btn-outline-primary');
+            btn.classList.add('btn-primary');
+        }
         
+    })
+    
 }
 
-let buttonClear = document.querySelector('.clear');
+function filtro() {
+    let arrayProd = document.querySelectorAll('.nuovoProdotto');
+    arrayProd.forEach(element => {
+        if (element.getAttribute("data-categoria") == "smartphones") {
+            element.classList.add('d-block');
+        } else {
+            element.classList.add('d-none');
+        }
+    });
+    
+}
+
+let buttonAll = document.querySelector('.all');
 let buttonSmartphones = document.querySelector('.smartphones');
 let buttonLaptop = document.querySelector('.laptop');
 let buttonFragrances = document.querySelector('.fragrances');
@@ -56,12 +74,12 @@ let buttonSkincare = document.querySelector('.skincare');
 let buttonGroceries = document.querySelector('.groceries');
 let buttonHomeDecoration = document.querySelector('.home-decoration');
 
-buttonSmartphones.addEventListener('click', smartphone);
+buttonSmartphones.addEventListener('click', filtro);
+buttonSmartphones.addEventListener('click', filtro);
+buttonSmartphones.addEventListener('click', filtro);
+buttonSmartphones.addEventListener('click', filtro);
+buttonSmartphones.addEventListener('click', filtro);
+buttonSmartphones.addEventListener('click', filtro);
+buttonSmartphones.addEventListener('click', filtro);
 
 
-// var clearAll = () => {
-//     cards = document.getElementsByClassName("col-sm-12")
-//     for (i = 0; i < cards.length; i++) {
-//         cards[i].classList.remove("d-none")
-//     }
-// }
