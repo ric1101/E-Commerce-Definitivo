@@ -6,6 +6,7 @@ function ottieniDati() {
         .then(res => res.json())
         .then(data => {
             creaProdotto(data.products);
+            smartphone(data.products);
             console.log(data.products);
         })
 
@@ -37,3 +38,30 @@ function creaProdotto(products) {
     `;
     });
 }
+
+
+function smartphone(products) {
+    fetch('https://dummyjson.com/products/category/smartphones')
+    .then(res => res.json())
+    .then(console.log);
+    
+        
+}
+
+let buttonClear = document.querySelector('.clear');
+let buttonSmartphones = document.querySelector('.smartphones');
+let buttonLaptop = document.querySelector('.laptop');
+let buttonFragrances = document.querySelector('.fragrances');
+let buttonSkincare = document.querySelector('.skincare');
+let buttonGroceries = document.querySelector('.groceries');
+let buttonHomeDecoration = document.querySelector('.home-decoration');
+
+buttonSmartphones.addEventListener('click', smartphone);
+
+
+// var clearAll = () => {
+//     cards = document.getElementsByClassName("col-sm-12")
+//     for (i = 0; i < cards.length; i++) {
+//         cards[i].classList.remove("d-none")
+//     }
+// }
