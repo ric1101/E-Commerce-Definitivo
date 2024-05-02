@@ -7,6 +7,7 @@ function ottieniDati() {
         .then(data => {
             creaProdotto(data.products);
             console.log(data.products);
+            
         })
 
 }
@@ -14,11 +15,11 @@ ottieniDati();
 
 function creaProdotto(products) {
     let container = document.querySelector('#prodottiP');
-
+    
     products.forEach(product => {
         /*let card = document.createElement('div');
         card.classList.add('card', 'col-lg-3', 'col-md-6');*/
-
+        
 
         container.innerHTML += `<div class="nuovoProdotto col-md-6 col-lg-4 col-xl-3 mb-4" data-categoria="${product.category}">
         <div class="card h-100">
@@ -36,6 +37,7 @@ function creaProdotto(products) {
         </div>
     `;
     });
+    inviaAlCarrello()
 }
 
 function btnOnOff() {
@@ -87,10 +89,10 @@ buttonSmartphones.addEventListener('click', function () {
     filtro("smartphones");
 });
 
-let buttonLaptop = document.querySelector('.laptop');
+let buttonLaptop = document.querySelector('.laptops');
 buttonLaptop.addEventListener('click', function () {
     btnOnOff.call(this);
-    filtro("laptop");
+    filtro("laptops");
 });
 
 let buttonFragrances = document.querySelector('.fragrances');
@@ -116,3 +118,16 @@ buttonHomeDecoration.addEventListener('click', function () {
     btnOnOff.call(this);
     filtro("home-decoration");
 });
+
+
+function inviaAlCarrello() {
+
+    let bottoniCarrello = document.querySelectorAll('.add-to-cart');
+    bottoniCarrello.forEach(btn => {
+        btn.addEventListener('click', function(){
+            
+        });
+
+    });
+    
+}

@@ -36,6 +36,3 @@ let prodottoCarrello = `<div class="card rounded-3 mb-4">
 </div>
 </div>`
 
-function inviaAlCarrello() {
-    
-}
