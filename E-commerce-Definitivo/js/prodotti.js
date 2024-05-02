@@ -31,7 +31,7 @@ function creaProdotto(products) {
                 <p class="card-text">${product.description}</p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary add-to-cart" data-name="${product.title}" data-price="${product.price}">Aggiungi al carrello</button>
+                <button class="btn btn-primary add-to-cart" data-name="${product.title}" data-price="${product.price}" data-image="${product.images[0]}">Aggiungi al carrello</button>
             </div>
         </div>
         </div>
@@ -125,7 +125,13 @@ function inviaAlCarrello() {
     let bottoniCarrello = document.querySelectorAll('.add-to-cart');
     bottoniCarrello.forEach(btn => {
         btn.addEventListener('click', function(){
-            
+            let nome = btn.getAttribute('data-name');
+            let prezzo = btn.getAttribute('data-price');
+            let image = btn.getAttribute('data-images');
+            localStorage.setItem('nome', nome);
+            localStorage.setItem('prezzo', prezzo);
+            localStorage.setItem('image', image);
+
         });
 
     });
