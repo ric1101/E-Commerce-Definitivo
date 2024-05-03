@@ -130,7 +130,7 @@ function inviaAlCarrello() {
             localStorage.setItem('arrayId', arrayId);
 
         });
-
+        
     });
     
 }
