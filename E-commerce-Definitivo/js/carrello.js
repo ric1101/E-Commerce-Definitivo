@@ -1,6 +1,6 @@
 
 let divProdotti = document.querySelector('#div-prodotti');
-let arrayCarrello = [];
+
 
 let nessunProdotto = `<div class="card rounded-3 mb-4" style="background-color: rgb(194, 193, 193);">
     <div class="card-body p-4">
@@ -12,11 +12,11 @@ let nessunProdotto = `<div class="card rounded-3 mb-4" style="background-color: 
 
 function popolaCarrello() {
     let ottieniArrayId = localStorage.getItem('arrayId');
-    console.log(arrayCarrello);
     
-    if(arrayCarrello.length != 0) {
+    if(ottieniArrayId != null) {
     
-    arrayCarrello = ottieniArrayId.split(',');
+    let arrayCarrello = ottieniArrayId.split(',');
+
     console.log(arrayCarrello);
         for (let i = 0; i < arrayCarrello.length; i++) {
         
@@ -56,8 +56,8 @@ function popolaCarrello() {
 
 popolaCarrello();
 
-// let totaleCarrello = 0;
+let totaleCarrello = 0;
 
-// function totaleOrdine() {
+function totaleOrdine() {
 
-// }
+}

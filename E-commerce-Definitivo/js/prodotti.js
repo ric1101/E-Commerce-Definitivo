@@ -121,7 +121,7 @@ buttonHomeDecoration.addEventListener('click', function () {
 
 let arrayId = [];
 function inviaAlCarrello() {
-
+    // let controlloStorage = 
     let bottoniCarrello = document.querySelectorAll('.add-to-cart');
     bottoniCarrello.forEach(btn => {
         btn.addEventListener('click', function(){
@@ -130,7 +130,7 @@ function inviaAlCarrello() {
             localStorage.setItem('arrayId', arrayId);
 
         });
-        
+
     });
     
 }
