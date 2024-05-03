@@ -10,22 +10,22 @@ let nessunProdotto = `<div class="card rounded-3 mb-4" style="background-color: 
     </div>
     </div>`;
 
-function popolaCarrello() {
-    let ottieniArrayId = localStorage.getItem('arrayId');
     
-    if(ottieniArrayId != null) {
-    
-    let arrayCarrello = ottieniArrayId.split(',');
-
-    console.log(arrayCarrello);
-        for (let i = 0; i < arrayCarrello.length; i++) {
+    function popolaCarrello() {
+        let price = 0;
+        let arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
         
-            const URLProdotto = `https://dummyjson.com/products/${arrayCarrello[i]}`;
+        if(arrayCarrello != null) {
             
-            fetch(URLProdotto)
-            .then(res => res.json())
-            .then(data =>{
-        
+            console.log(arrayCarrello);
+            for (let i = 0; i < arrayCarrello.length; i++) {
+                
+                const URLProdotto = `https://dummyjson.com/products/${arrayCarrello[i]}`;
+                
+                fetch(URLProdotto)
+                .then(res => res.json())
+                .then(data =>{
+                    
                     divProdotti.innerHTML += `<div class="card rounded-3 mb-4">
                     <div class="card-body p-4">
                     <div class="row d-flex justify-content-between align-items-center">
@@ -44,20 +44,17 @@ function popolaCarrello() {
                     </div>
                     </div>
                     </div>`;
-                
-            });
+                    price += data.price;
+                });
+            }
+        } else {
+            divProdotti.innerHTML = nessunProdotto;
         }
-       
-    } else {
-        divProdotti.innerHTML = nessunProdotto;
-    }
+        let divTotaleOrdine = document.querySelector('#totale-ordine');
+        divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
     
 }
-
+ 
 popolaCarrello();
 
-let totaleCarrello = 0;
 
-function totaleOrdine() {
-
-}

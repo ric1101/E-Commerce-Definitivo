@@ -7,7 +7,7 @@ function ottieniDati() {
         .then(data => {
             creaProdotto(data.products);
             console.log(data.products);
-            
+
         })
 
 }
@@ -15,11 +15,11 @@ ottieniDati();
 
 function creaProdotto(products) {
     let container = document.querySelector('#prodottiP');
-    
+
     products.forEach(product => {
         /*let card = document.createElement('div');
         card.classList.add('card', 'col-lg-3', 'col-md-6');*/
-        
+
 
         container.innerHTML += `<div class="nuovoProdotto col-md-6 col-lg-4 col-xl-3 mb-4" data-categoria="${product.category}">
         <div class="card h-100">
@@ -120,17 +120,27 @@ buttonHomeDecoration.addEventListener('click', function () {
 });
 
 let arrayId = [];
+
 function inviaAlCarrello() {
-    // let controlloStorage = 
+
     let bottoniCarrello = document.querySelectorAll('.add-to-cart');
-    bottoniCarrello.forEach(btn => {
-        btn.addEventListener('click', function(){
-            let id = btn.getAttribute('data-id');
-            arrayId.push(id);
-            localStorage.setItem('arrayId', arrayId);
+    let controlloStorage = JSON.parse(localStorage.getItem('arrayId'));
+    
+    if (controlloStorage) {
+        arrayId = controlloStorage;
+    }
+        bottoniCarrello.forEach(btn => {
+            btn.addEventListener('click', function () {
+                let id = btn.getAttribute('data-id');
+                arrayId.push(id);
+                console.log(arrayId);
+                localStorage.setItem('arrayId', JSON.stringify(arrayId));
+                
+            });
 
         });
+    }
 
+    document.addEventListener('DOMContentLoaded', function() {
+        inviaAlCarrello();
     });
-    
-}
