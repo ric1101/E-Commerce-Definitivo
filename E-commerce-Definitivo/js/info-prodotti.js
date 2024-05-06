@@ -29,7 +29,7 @@ function mostraInfoProdotto() {
 
                 data.images.forEach(image => {
 
-                    imgGallery.innerHTML += `<div><img src="${image}" class="img-fluid thumb" alt=""></div>`
+                    imgGallery.innerHTML += `<div class="box-image"><img src="${image}" class="img-fluid thumb" alt=""></div>`
 
                 });
 
