@@ -49,6 +49,7 @@ let nessunProdotto = `<div class="card rounded-3 mb-4" style="background-color: 
                     divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
                 });
             }
+            
         } else {
             divProdotti.innerHTML = nessunProdotto;
             divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
@@ -58,3 +59,17 @@ let nessunProdotto = `<div class="card rounded-3 mb-4" style="background-color: 
  
 
 popolaCarrello();
+
+function cancellaProdotto() {
+    
+    let  = document.querySelectorAll('.show-product');
+    console.log(info);
+    info.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const id = btn.getAttribute('data-id');
+            console.log(id);
+            localStorage.setItem('info', JSON.stringify(id));
+            window.location.href = 'http://127.0.0.1:5500/info-prodotti.html';
+        });
+    });
+}

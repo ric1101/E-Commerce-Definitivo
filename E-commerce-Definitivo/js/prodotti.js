@@ -29,13 +29,14 @@ function creaProdotto(products) {
             </div>
             <div class="card-footer">
                 <button class="btn btn-primary add-to-cart" data-name="${product.title}" data-price="${product.price}" data-image="${product.images[0]}" data-id="${product.id}">Aggiungi al carrello</button>
-                <button class="btn btn-info description mt-2">Descrizione</button>
+                <button class="btn btn-info mt-2 show-product" data-name="${product.title}" data-price="${product.price}" data-image="${product.images[0]}" data-id="${product.id}">Descrizione</button>
             </div>
         </div>
         </div>
     `;
     });
     inviaAlCarrello()
+    inviaPaginaInfo()
 }
 
 function btnOnOff() {
@@ -56,7 +57,7 @@ let btnFiltri = document.querySelectorAll('.btnFiltro');
 btnFiltri.forEach(btn => {
     btn.addEventListener('click', function () {
         btnOnOff.call(this);
-        let prendiAttributo = this.getAttribute('data-categoria') 
+        let prendiAttributo = this.getAttribute('data-categoria')
         filtro(prendiAttributo);
     });
 });
@@ -81,24 +82,36 @@ function inviaAlCarrello() {
 
     let bottoniCarrello = document.querySelectorAll('.add-to-cart');
     let controlloStorage = JSON.parse(localStorage.getItem('arrayId'));
-    
+    console.log(bottoniCarrello);
     if (controlloStorage) {
         arrayId = controlloStorage;
     }
-        bottoniCarrello.forEach(btn => {
-            btn.addEventListener('click', function () {
-                let id = btn.getAttribute('data-id');
-                arrayId.push(id);
-                console.log(arrayId);
-                localStorage.setItem('arrayId', JSON.stringify(arrayId));
-                
-            });
+    bottoniCarrello.forEach(btn => {
+        btn.addEventListener('click', function () {
+            let id = btn.getAttribute('data-id');
+            arrayId.push(id);
+            console.log(arrayId);
+            localStorage.setItem('arrayId', JSON.stringify(arrayId));
 
         });
 
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        inviaAlCarrello();
     });
+
+}
+
+
+function inviaPaginaInfo() {
+    
+    let info = document.querySelectorAll('.show-product');
+    console.log(info);
+    info.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const id = btn.getAttribute('data-id');
+            console.log(id);
+            localStorage.setItem('info', JSON.stringify(id));
+            window.location.href = 'http://127.0.0.1:5500/info-prodotti.html';
+        });
+    });
+}
+
 
