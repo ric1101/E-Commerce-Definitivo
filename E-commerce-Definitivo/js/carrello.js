@@ -9,25 +9,27 @@ let nessunProdotto = `<div class="card rounded-3 mb-4" style="background-color: 
         </div>
     </div>
     </div>`;
-    
-    let divTotaleOrdine = document.querySelector('#totale-ordini');
-    
-    function popolaCarrello() {
-        let price = 0;
-        let arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
-        
-        if(arrayCarrello != null) {
-            
+
+let divTotaleOrdine = document.querySelector('#totale-ordini');
+
+function popolaCarrello() {
+    let price = 0;
+    let arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+
+
+    if (arrayCarrello != null) {
+        if (arrayCarrello.length > 0) {
+
             console.log(arrayCarrello);
             for (let i = 0; i < arrayCarrello.length; i++) {
-                
+
                 const URLProdotto = `https://dummyjson.com/products/${arrayCarrello[i]}`;
-                
+
                 fetch(URLProdotto)
-                .then(res => res.json())
-                .then(data =>{
-                    
-                    divProdotti.innerHTML += `<div class="card rounded-3 mb-4">
+                    .then(res => res.json())
+                    .then(data => {
+
+                        divProdotti.innerHTML += `<div class="card rounded-3 mb-4">
                     <div class="card-body p-4">
                     <div class="row d-flex justify-content-between align-items-center">
                     <div class="col-md-2 col-lg-2 col-xl-2">
@@ -40,36 +42,45 @@ let nessunProdotto = `<div class="card rounded-3 mb-4" style="background-color: 
                     <h5 class="mb-0">${data.price} €</h5>
                     </div>
                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                    <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                    <a href="#!" class="text-danger"><i class="cestino fas fa-trash fa-lg" data-id="${data.id}"></i></a>
                     </div>
                     </div>
                     </div>
                     </div>`;
                     price += data.price;
                     divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
-                });
+                    cancellaProdotto();
+                    });
+                }
+            } else {
+                divProdotti.innerHTML = nessunProdotto;
+                divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
             }
             
         } else {
             divProdotti.innerHTML = nessunProdotto;
             divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
         }
+        
+    }
     
-}
- 
-
-popolaCarrello();
-
-function cancellaProdotto() {
     
-    let  = document.querySelectorAll('.show-product');
-    console.log(info);
-    info.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const id = btn.getAttribute('data-id');
-            console.log(id);
-            localStorage.setItem('info', JSON.stringify(id));
-            window.location.href = 'http://127.0.0.1:5500/info-prodotti.html';
+    popolaCarrello();
+    
+    function cancellaProdotto() {
+        
+        let arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+        let cestino = document.querySelectorAll('.cestino');
+        cestino.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const id = btn.getAttribute('data-id');
+                let elementoEliminare = arrayCarrello.indexOf(id);
+                arrayCarrello.splice(elementoEliminare, 1);
+                console.log(id);
+                localStorage.setItem('arrayId', JSON.stringify(arrayCarrello));
+                
+            });
         });
-    });
-}
+    }
+    
+    
