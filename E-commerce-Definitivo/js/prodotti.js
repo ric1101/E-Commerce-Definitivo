@@ -1,4 +1,4 @@
-let arrayProdotti = [];
+
 const URLProdotti = "https://dummyjson.com/products";
 
 function ottieniDati() {
@@ -17,9 +17,6 @@ function creaProdotto(products) {
     let container = document.querySelector('#prodottiP');
 
     products.forEach(product => {
-        /*let card = document.createElement('div');
-        card.classList.add('card', 'col-lg-3', 'col-md-6');*/
-
 
         container.innerHTML += `<div class="nuovoProdotto col-md-6 col-lg-4 col-xl-3 mb-4" data-categoria="${product.category}">
         <div class="card h-100">
@@ -32,6 +29,7 @@ function creaProdotto(products) {
             </div>
             <div class="card-footer">
                 <button class="btn btn-primary add-to-cart" data-name="${product.title}" data-price="${product.price}" data-image="${product.images[0]}" data-id="${product.id}">Aggiungi al carrello</button>
+                <button class="btn btn-info description mt-2">Descrizione</button>
             </div>
         </div>
         </div>
@@ -58,7 +56,8 @@ let btnFiltri = document.querySelectorAll('.btnFiltro');
 btnFiltri.forEach(btn => {
     btn.addEventListener('click', function () {
         btnOnOff.call(this);
-        filtro(this.dataset.categoria);
+        let prendiAttributo = this.getAttribute('data-categoria') 
+        filtro(prendiAttributo);
     });
 });
 
@@ -75,49 +74,6 @@ function filtro(categoria) {
         }
     });
 }
-
-
-let buttonAll = document.querySelector('.all');
-buttonAll.addEventListener('click', function () {
-    btnOnOff.call(this);
-    filtro();
-});
-
-let buttonSmartphones = document.querySelector('.smartphones');
-buttonSmartphones.addEventListener('click', function () {
-    btnOnOff.call(this);
-    filtro("smartphones");
-});
-
-let buttonLaptop = document.querySelector('.laptops');
-buttonLaptop.addEventListener('click', function () {
-    btnOnOff.call(this);
-    filtro("laptops");
-});
-
-let buttonFragrances = document.querySelector('.fragrances');
-buttonFragrances.addEventListener('click', function () {
-    btnOnOff.call(this);
-    filtro("fragrances");
-});
-
-let buttonSkincare = document.querySelector('.skincare');
-buttonSkincare.addEventListener('click', function () {
-    btnOnOff.call(this);
-    filtro("skincare");
-});
-
-let buttonGroceries = document.querySelector('.groceries');
-buttonGroceries.addEventListener('click', function () {
-    btnOnOff.call(this);
-    filtro("groceries");
-});
-
-let buttonHomeDecoration = document.querySelector('.home-decoration');
-buttonHomeDecoration.addEventListener('click', function () {
-    btnOnOff.call(this);
-    filtro("home-decoration");
-});
 
 let arrayId = [];
 
@@ -139,8 +95,10 @@ function inviaAlCarrello() {
             });
 
         });
+
     }
 
     document.addEventListener('DOMContentLoaded', function() {
         inviaAlCarrello();
     });
+
