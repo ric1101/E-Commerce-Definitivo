@@ -50,20 +50,20 @@ function popolaCarrello() {
                     price += data.price;
                     divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
                     cancellaProdotto();
-                    });
-                }
-            } else {
-                divProdotti.innerHTML = nessunProdotto;
-                divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
+                });
             }
-            
         } else {
             divProdotti.innerHTML = nessunProdotto;
             divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
         }
         
+    } else {
+        divProdotti.innerHTML = nessunProdotto;
+        divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
     }
     
+}
+
     
     popolaCarrello();
     
@@ -81,6 +81,7 @@ function popolaCarrello() {
                 
             });
         });
+        
     }
-    
+
     
