@@ -29,7 +29,7 @@ function creaProdotto(products) {
             </div>
             <div class="card-footer">
                 <button class="btn btn-primary add-to-cart" data-name="${product.title}" data-price="${product.price}" data-image="${product.images[0]}" data-id="${product.id}">Aggiungi al carrello</button>
-                <button class="btn btn-info mt-2 show-product" data-name="${product.title}" data-price="${product.price}" data-image="${product.images[0]}" data-id="${product.id}">Descrizione</button>
+                <button class="btn btn-info mt-2 show-product" data-name="${product.title}" data-price="${product.price}" data-image="${product.images[0]}" data-id="${product.id}">Dettagli</button>
             </div>
         </div>
         </div>

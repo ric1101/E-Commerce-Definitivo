@@ -3,6 +3,9 @@
     background-position: center;
     background-repeat: no-repeat;
     height: 60vh;
+    
+    display: flex;
+    align-items: end;
 }
 
 .carousel-item {
@@ -21,4 +24,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     height: 300px;
+}
+
+.caption {
+    background: rgba(255, 255, 255, 0.608);
+    padding: .5rem;
+    
+    backdrop-filter: blur(8px);
 }
