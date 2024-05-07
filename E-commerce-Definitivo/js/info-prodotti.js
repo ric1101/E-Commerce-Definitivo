@@ -48,3 +48,24 @@ function mostraInfoProdotto() {
 }
 
 mostraInfoProdotto();
+
+
+function inviaAlCarrello() {
+    
+    let bottoniCarrello = document.querySelectorAll('.add-to-cart');
+    let controlloStorage = JSON.parse(localStorage.getItem('arrayId'));
+    console.log(bottoniCarrello);
+    if (controlloStorage) {
+        arrayId = controlloStorage;
+    }
+    bottoniCarrello.forEach(btn => {
+        btn.addEventListener('click', function () {
+            let id = btn.getAttribute('data-id');
+            arrayId.push(id);
+            console.log(arrayId);
+            localStorage.setItem('arrayId', JSON.stringify(arrayId));
+
+        });
+
+    });
+}

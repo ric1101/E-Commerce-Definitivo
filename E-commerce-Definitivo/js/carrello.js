@@ -12,24 +12,24 @@ let nessunProdotto = `<div class="card rounded-3 mb-4" style="background-color: 
 
 let divTotaleOrdine = document.querySelector('#totale-ordini');
 
-function popolaCarrello() {
+async function popolaCarrello() {
     let price = 0;
     let arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
 
 
     if (arrayCarrello != null) {
         if (arrayCarrello.length > 0) {
+            let carrelloHtml = '';
 
             console.log(arrayCarrello);
             for (let i = 0; i < arrayCarrello.length; i++) {
 
                 const URLProdotto = `https://dummyjson.com/products/${arrayCarrello[i]}`;
 
-                fetch(URLProdotto)
+                let data = await fetch(URLProdotto)
                     .then(res => res.json())
-                    .then(data => {
-
-                        divProdotti.innerHTML += `<div class="card rounded-3 mb-4">
+                    
+                    carrelloHtml += `<div class="card rounded-3 mb-4">
                     <div class="card-body p-4">
                     <div class="row d-flex justify-content-between align-items-center">
                     <div class="col-md-2 col-lg-2 col-xl-2">
@@ -47,41 +47,43 @@ function popolaCarrello() {
                     </div>
                     </div>
                     </div>`;
-                    price += data.price;
+                        price += data.price;
+                        
+                    }
                     divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
+                    divProdotti.innerHTML = carrelloHtml;
                     cancellaProdotto();
-                });
-            }
+
         } else {
             divProdotti.innerHTML = nessunProdotto;
             divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
         }
-        
     } else {
         divProdotti.innerHTML = nessunProdotto;
         divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
     }
-    
+
 }
 
-    
-    popolaCarrello();
-    
-    function cancellaProdotto() {
-        
-        let arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
-        let cestino = document.querySelectorAll('.cestino');
-        cestino.forEach(btn => {
-            btn.addEventListener('click', function () {
-                const id = btn.getAttribute('data-id');
-                let elementoEliminare = arrayCarrello.indexOf(id);
-                arrayCarrello.splice(elementoEliminare, 1);
-                console.log(id);
-                localStorage.setItem('arrayId', JSON.stringify(arrayCarrello));
-                
-            });
-        });
-        
-    }
+popolaCarrello();
 
-    
+
+function cancellaProdotto() {
+
+    let arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+    let cestino = document.querySelectorAll('.cestino');
+    cestino.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const id = btn.getAttribute('data-id');
+            let elementoEliminare = arrayCarrello.indexOf(id);
+            arrayCarrello.splice(elementoEliminare, 1);
+            console.log(id);
+            localStorage.setItem('arrayId', JSON.stringify(arrayCarrello));
+            popolaCarrello();
+        });
+
+    });
+
+}
+
+
