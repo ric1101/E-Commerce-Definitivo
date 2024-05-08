@@ -28,32 +28,35 @@ var swiper3 = new Swiper(".mySwiper3", {
   },
 });
 
+
 const URLProdotti = "https://dummyjson.com/products";
 
 function ottieniDati() {
+  
   fetch(URLProdotti)
-      .then(res => res.json())
-      .then(data => {
-        popolaSwiper(data.products);
-        console.log(data.products);
-
-      })
-
+  .then(res => res.json())
+  .then(data => {
+    popolaSwiper(data.products);
+    console.log(data.products);
+    
+  })
+  
 }
 ottieniDati();
-
-
-function popolaSwiper(products) {
-  let swiperSlider1 = document.querySelector('.swiper1');
-  let swiperSlider2 = document.querySelector('.swiper2');
-  let swiperSlider3 = document.querySelector('.swiper3');
-  
-  let arrayProdotti = [];
-
+    
+    
+    function popolaSwiper(products) {
+      let swiperSlider1 = document.querySelector('.swiper1');
+      let swiperSlider2 = document.querySelector('.swiper2');
+      let swiperSlider3 = document.querySelector('.swiper3');
+      
+      let arrayProdotti = [];
+      
       products.forEach(product => {
         arrayProdotti.push(product);
+        
       });
-      console.log(arrayProdotti);
+
       for (let i = 0; i < 10; i++) {
         
         let elementSwiper = `
@@ -64,11 +67,11 @@ function popolaSwiper(products) {
         </div>
         </div>
         `;
-
+        
         swiperSlider1.innerHTML += elementSwiper;
         
       }
-
+      
       for (let i = 10; i < 20; i++) {
         
         let elementSwiper = `
@@ -79,11 +82,11 @@ function popolaSwiper(products) {
         </div>
         </div>
         `;
-
+        
         swiperSlider2.innerHTML += elementSwiper;
         
       }
-        
+      
       for (let i = 20; i < 30; i++) {
         
         let elementSwiper = `
@@ -94,11 +97,32 @@ function popolaSwiper(products) {
         </div>
         </div>
         `;
-
+        
         swiperSlider3.innerHTML += elementSwiper;
         
       }
+      
+      
+    }
+    
+    
+    let arrayCarrello = [];
+    let numeroArticoli = document.querySelector('#numeroArticoli');
+    let numProdotti = 0;
+    
+    function contoCarrello() {
+      console.log(numProdotti);
+      
+      arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+      
+      numProdotti = arrayCarrello.length;
+      numeroArticoli.innerHTML = numProdotti;
+      
+      if (numProdotti == 0) {
+        numeroArticoli.innerHTML = null;
+      }
+      
+    }
+    contoCarrello();
 
-  }
-
-popolaSwiper();
+    

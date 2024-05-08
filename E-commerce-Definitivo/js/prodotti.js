@@ -92,16 +92,16 @@ function inviaAlCarrello() {
             arrayId.push(id);
             console.log(arrayId);
             localStorage.setItem('arrayId', JSON.stringify(arrayId));
+            contoCarrello();
 
         });
 
     });
-
 }
 
 
 function inviaPaginaInfo() {
-    
+
     let info = document.querySelectorAll('.show-product');
     console.log(info);
     info.forEach(btn => {
@@ -109,9 +109,27 @@ function inviaPaginaInfo() {
             const id = btn.getAttribute('data-id');
             console.log(id);
             localStorage.setItem('info', JSON.stringify(id));
-            window.location.href = 'http://127.0.0.1:5500/info-prodotti.html';
+            window.location.href = 'http://127.0.0.1:5500/E-commerce-Definitivo/info-prodotti.html';
         });
     });
 }
 
 
+let arrayCarrello = [];
+let numeroArticoli = document.querySelector('#numeroArticoli');
+let numProdotti = 0;
+
+function contoCarrello() {
+    console.log(numProdotti);
+
+    arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+
+    numProdotti = arrayCarrello.length;
+    numeroArticoli.innerHTML = numProdotti;
+
+    if (numProdotti == 0) {
+        numeroArticoli.innerHTML = null;
+    }
+
+}
+contoCarrello();

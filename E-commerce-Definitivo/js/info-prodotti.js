@@ -69,3 +69,23 @@ function inviaAlCarrello() {
 
     });
 }
+
+
+let arrayCarrello = [];
+let numeroArticoli = document.querySelector('#numeroArticoli');
+let numProdotti = 0;
+
+function contoCarrello() {
+  console.log(numProdotti);
+
+  arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+
+  numProdotti = arrayCarrello.length;
+  numeroArticoli.innerHTML = numProdotti;
+
+  if (numProdotti == 0) {
+    numeroArticoli.innerHTML = null;
+  }
+
+}
+contoCarrello();

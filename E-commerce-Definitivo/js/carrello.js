@@ -53,20 +53,20 @@ async function popolaCarrello() {
                     divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
                     divProdotti.innerHTML = carrelloHtml;
                     cancellaProdotto();
-
-        } else {
-            divProdotti.innerHTML = nessunProdotto;
-            divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
+                    
+                } else {
+                    divProdotti.innerHTML = nessunProdotto;
+                    divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
+                }
+            } else {
+                divProdotti.innerHTML = nessunProdotto;
+                divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
+            }
+            
         }
-    } else {
-        divProdotti.innerHTML = nessunProdotto;
-        divTotaleOrdine.innerHTML = `<h4> Totale ordine: ${price} € </h4>`;
-    }
-
-}
-
+        
+        
 popolaCarrello();
-
 
 function cancellaProdotto() {
 
@@ -80,6 +80,7 @@ function cancellaProdotto() {
             console.log(id);
             localStorage.setItem('arrayId', JSON.stringify(arrayCarrello));
             popolaCarrello();
+            contoCarrello();
         });
 
     });
@@ -87,3 +88,21 @@ function cancellaProdotto() {
 }
 
 
+let arrayCarrello = [];
+let numeroArticoli = document.querySelector('#numeroArticoli');
+let numProdotti = 0;
+
+function contoCarrello() {
+  console.log(numProdotti);
+
+  arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+
+  numProdotti = arrayCarrello.length;
+  numeroArticoli.innerHTML = numProdotti;
+
+  if (numProdotti == 0) {
+    numeroArticoli.innerHTML = null;
+  }
+
+}
+contoCarrello();
