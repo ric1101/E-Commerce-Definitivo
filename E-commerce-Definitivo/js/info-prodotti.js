@@ -3,6 +3,7 @@
 let title = document.querySelector('#title');
 let description = document.querySelector('#description');
 let price = document.querySelector('#price');
+let bottone = document.querySelector('#bottone');
 let imgPrincipale = document.querySelector('#imgPrincipale');
 let imgGallery = document.querySelector('.gallery');
 
@@ -12,6 +13,9 @@ function mostraInfoProdotto() {
     let info = JSON.parse(localStorage.getItem('info'));
 
     const URLProdotto = `https://dummyjson.com/products/${info}`;
+
+    let thumbs = document.querySelectorAll('.thumb');
+
     console.log(info);
 
     fetch(URLProdotto)
@@ -23,7 +27,9 @@ function mostraInfoProdotto() {
             title.innerHTML = data.title;
             description.innerHTML = data.description;
             price.innerHTML = '€ ' + data.price;
+            bottone.setAttribute('data-id', data.id);
             imgPrincipale.setAttribute('src', data.images[0]);
+
 
             if (data.images.length > 2) {
 
@@ -32,9 +38,7 @@ function mostraInfoProdotto() {
                     imgGallery.innerHTML += `<div class="box-image"><img src="${image}" class="img-fluid thumb" alt=""></div>`
 
                 });
-
-
-                let thumbs = document.querySelectorAll('.thumb');
+                
                 thumbs.forEach(thumb => {
 
                     thumb.addEventListener('click', function () {
@@ -43,49 +47,53 @@ function mostraInfoProdotto() {
 
                     })
                 });
-            }
+            }  
+            
         });
+        
 }
 
 mostraInfoProdotto();
 
 
 function inviaAlCarrello() {
-    
-    let bottoniCarrello = document.querySelectorAll('.add-to-cart');
-    let controlloStorage = JSON.parse(localStorage.getItem('arrayId'));
-    console.log(bottoniCarrello);
-    if (controlloStorage) {
-        arrayId = controlloStorage;
-    }
-    bottoniCarrello.forEach(btn => {
-        btn.addEventListener('click', function () {
-            let id = btn.getAttribute('data-id');
-            arrayId.push(id);
-            console.log(arrayId);
-            localStorage.setItem('arrayId', JSON.stringify(arrayId));
 
-        });
+let bottoniCarrello = document.querySelectorAll('.add-to-cart');
+let controlloStorage = JSON.parse(localStorage.getItem('arrayId'));
+console.log(bottoniCarrello);
+if (controlloStorage) {
+    arrayId = controlloStorage;
+}
+bottoniCarrello.forEach(btn => {
+    btn.addEventListener('click', function () {
+        let id = btn.getAttribute('data-id');
+        arrayId.push(id);
+        console.log(arrayId);
+        localStorage.setItem('arrayId', JSON.stringify(arrayId));
 
     });
+
+});
 }
+inviaAlCarrello();
 
 
-let arrayCarrello = [];
-let numeroArticoli = document.querySelector('#numeroArticoli');
-let numProdotti = 0;
+// let arrayCarrello = [];
+// let numeroArticoli = document.querySelector('#numeroArticoli');
+// let numProdotti = 0;
 
-function contoCarrello() {
-  console.log(numProdotti);
+// function contoCarrello() {
+//     console.log(numProdotti);
 
-  arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+//     arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
 
-  numProdotti = arrayCarrello.length;
-  numeroArticoli.innerHTML = numProdotti;
+//     numProdotti = arrayCarrello.length;
+//     numeroArticoli.innerHTML = numProdotti;
 
-  if (numProdotti == 0) {
-    numeroArticoli.innerHTML = null;
-  }
+//     if (numProdotti == 0) {
+//         numeroArticoli.innerHTML = null;
+//     }
 
-}
-contoCarrello();
+// }
+// contoCarrello();
+
