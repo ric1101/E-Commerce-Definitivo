@@ -38,7 +38,7 @@ function mostraInfoProdotto() {
                     imgGallery.innerHTML += `<div class="box-image"><img src="${image}" class="img-fluid thumb" alt=""></div>`
 
                 });
-                
+
                 thumbs.forEach(thumb => {
 
                     thumb.addEventListener('click', function () {
@@ -47,53 +47,54 @@ function mostraInfoProdotto() {
 
                     })
                 });
-            }  
-            
+            }
+
         });
-        
+
 }
 
 mostraInfoProdotto();
 
 
+let bottoniCarrello = document.querySelector('.add-to-cart');
+
+
+
 function inviaAlCarrello() {
+    let controlloStorage = JSON.parse(localStorage.getItem('arrayId'));
+    console.log(bottoniCarrello);
 
-let bottoniCarrello = document.querySelectorAll('.add-to-cart');
-let controlloStorage = JSON.parse(localStorage.getItem('arrayId'));
-console.log(bottoniCarrello);
-if (controlloStorage) {
-    arrayId = controlloStorage;
+    if (controlloStorage) {
+        arrayId = controlloStorage;
+    }
+    let id = bottone.getAttribute('data-id');
+    arrayId.push(id);
+    console.log(arrayId);
+    localStorage.setItem('arrayId', JSON.stringify(arrayId));
 }
-bottoniCarrello.forEach(btn => {
-    btn.addEventListener('click', function () {
-        let id = btn.getAttribute('data-id');
-        arrayId.push(id);
-        console.log(arrayId);
-        localStorage.setItem('arrayId', JSON.stringify(arrayId));
 
-    });
+bottoniCarrello.addEventListener('click', function () {
+    inviaAlCarrello();
+    contoCarrello();
 
 });
+
+let arrayCarrello = [];
+let numeroArticoli = document.querySelector('#numeroArticoli');
+let numProdotti = 0;
+
+function contoCarrello() {
+    console.log(numProdotti);
+
+    arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+
+    numProdotti = arrayCarrello.length;
+    numeroArticoli.innerHTML = numProdotti;
+
+    if (numProdotti == 0) {
+        numeroArticoli.innerHTML = null;
+    }
+
 }
-inviaAlCarrello();
-
-
-// let arrayCarrello = [];
-// let numeroArticoli = document.querySelector('#numeroArticoli');
-// let numProdotti = 0;
-
-// function contoCarrello() {
-//     console.log(numProdotti);
-
-//     arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
-
-//     numProdotti = arrayCarrello.length;
-//     numeroArticoli.innerHTML = numProdotti;
-
-//     if (numProdotti == 0) {
-//         numeroArticoli.innerHTML = null;
-//     }
-
-// }
-// contoCarrello();
+contoCarrello();
 

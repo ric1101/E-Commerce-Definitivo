@@ -1,7 +1,13 @@
+
+
 var swiper = new Swiper(".mySwiper", {
   slidesPerView: 4,
   spaceBetween: 30,
   freeMode: true,
+  autoplay: {
+    enable: true,
+    delay: 1000
+  },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -12,6 +18,10 @@ var swiper2 = new Swiper(".mySwiper2", {
   slidesPerView: 4,
   spaceBetween: 30,
   freeMode: true,
+  autoplay: {
+    enable: true,
+    delay: 1250
+  },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -22,6 +32,10 @@ var swiper3 = new Swiper(".mySwiper3", {
   slidesPerView: 4,
   spaceBetween: 30,
   freeMode: true,
+  autoplay: {
+    enable: true,
+    delay: 1500
+  },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,

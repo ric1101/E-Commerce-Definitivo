@@ -1,3 +1,11 @@
+.titolo {
+    font-family: "Ultra", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 40px;
+    color: #303030;
+}
+
 .swiper-slide {
     background-size: cover;
     background-position: center;
