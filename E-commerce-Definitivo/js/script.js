@@ -4,10 +4,10 @@ var swiper = new Swiper(".mySwiper", {
   slidesPerView: 4,
   spaceBetween: 30,
   freeMode: true,
-  autoplay: {
-    enable: true,
-    delay: 1000
-  },
+  // autoplay: {
+  //   enable: true,
+  //   delay: 2000
+  // },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -18,10 +18,10 @@ var swiper2 = new Swiper(".mySwiper2", {
   slidesPerView: 4,
   spaceBetween: 30,
   freeMode: true,
-  autoplay: {
-    enable: true,
-    delay: 1250
-  },
+  // autoplay: {
+  //   enable: true,
+  //   delay: 2500
+  // },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -32,10 +32,10 @@ var swiper3 = new Swiper(".mySwiper3", {
   slidesPerView: 4,
   spaceBetween: 30,
   freeMode: true,
-  autoplay: {
-    enable: true,
-    delay: 1500
-  },
+  // autoplay: {
+  //   enable: true,
+  //   delay: 3000
+  // },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -74,7 +74,7 @@ ottieniDati();
       for (let i = 0; i < 10; i++) {
         
         let elementSwiper = `
-        <div class="swiper-slide" style="background-image: url(${arrayProdotti[i].images[0]});">
+        <div class="swiper-slide home" style="background-image: url(${arrayProdotti[i].images[0]});" data-id="${arrayProdotti[i].id}">
         <div class="caption">
         <h5>${arrayProdotti[i].title}</h5>
         <p>${arrayProdotti[i].description}</p>
@@ -83,13 +83,13 @@ ottieniDati();
         `;
         
         swiperSlider1.innerHTML += elementSwiper;
-        
+        inviaPaginaInfo();
       }
       
       for (let i = 10; i < 20; i++) {
         
         let elementSwiper = `
-        <div class="swiper-slide" style="background-image: url(${arrayProdotti[i].images[0]});">    
+        <div class="swiper-slide home" style="background-image: url(${arrayProdotti[i].images[0]});" data-id="${arrayProdotti[i].id}">    
         <div class="caption">
         <h5>${arrayProdotti[i].title}</h5>
         <p>${arrayProdotti[i].description}</p>
@@ -98,13 +98,13 @@ ottieniDati();
         `;
         
         swiperSlider2.innerHTML += elementSwiper;
-        
+        inviaPaginaInfo();
       }
       
       for (let i = 20; i < 30; i++) {
         
         let elementSwiper = `
-        <div class="swiper-slide" style="background-image: url(${arrayProdotti[i].images[0]});">
+        <div class="swiper-slide home" style="background-image: url(${arrayProdotti[i].images[0]});" data-id="${arrayProdotti[i].id}">
         <div class="caption">
         <h5>${arrayProdotti[i].title}</h5>
         <p>${arrayProdotti[i].description}</p>
@@ -113,9 +113,8 @@ ottieniDati();
         `;
         
         swiperSlider3.innerHTML += elementSwiper;
-        
+        inviaPaginaInfo();
       }
-      
       
     }
     
@@ -139,4 +138,16 @@ ottieniDati();
     }
     contoCarrello();
 
-    
+    function inviaPaginaInfo() {
+
+      let info = document.querySelectorAll('.home');
+      console.log(info);
+      info.forEach(btn => {
+          btn.addEventListener('click', function () {
+              const id = btn.getAttribute('data-id');
+              console.log(id);
+              localStorage.setItem('info', JSON.stringify(id));
+              window.location.href = 'http://127.0.0.1:5500/info-prodotti.html';
+          });
+      });
+  }

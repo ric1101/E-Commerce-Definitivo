@@ -106,3 +106,14 @@ function contoCarrello() {
 
 }
 contoCarrello();
+
+let checkout = document.querySelector('.checkout');
+
+checkout.addEventListener('click', function () {
+    vaiAlPagamento();
+
+});
+
+function vaiAlPagamento() {
+    window.location.href = 'http://127.0.0.1:5500/pagamento.html';
+}

@@ -14,34 +14,34 @@ function mostraInfoProdotto() {
 
     const URLProdotto = `https://dummyjson.com/products/${info}`;
 
-    let thumbs = document.querySelectorAll('.thumb');
-
+    
     console.log(info);
-
+    
     fetch(URLProdotto)
-        .then(res => res.json())
-        .then(data => {
-
-            let img = `<div><img src="./amazone-30-4-2024.png" class="img-fluid" alt=""></div>`
-
-            title.innerHTML = data.title;
-            description.innerHTML = data.description;
-            price.innerHTML = '€ ' + data.price;
-            bottone.setAttribute('data-id', data.id);
-            imgPrincipale.setAttribute('src', data.images[0]);
-
-
-            if (data.images.length > 2) {
-
-                data.images.forEach(image => {
-
-                    imgGallery.innerHTML += `<div class="box-image"><img src="${image}" class="img-fluid thumb" alt=""></div>`
-
-                });
-
-                thumbs.forEach(thumb => {
-
-                    thumb.addEventListener('click', function () {
+    .then(res => res.json())
+    .then(data => {
+        
+        let img = `<div><img src="./amazone-30-4-2024.png" class="img-fluid" alt=""></div>`
+        
+        title.innerHTML = data.title;
+        description.innerHTML = data.description;
+        price.innerHTML = '€ ' + data.price;
+        bottone.setAttribute('data-id', data.id);
+        imgPrincipale.setAttribute('src', data.images[0]);
+        
+        
+        if (data.images.length > 2) {
+            
+            data.images.forEach(image => {
+                
+                imgGallery.innerHTML += `<div class="box-image"><img src="${image}" class="img-fluid thumb" alt=""></div>`
+                
+            });
+            
+            let thumbs = document.querySelectorAll('.thumb');
+            thumbs.forEach(thumb => {
+                
+                thumb.addEventListener('click', function () {
                         let src = thumb.getAttribute('src');
                         imgPrincipale.setAttribute('src', src);
 
