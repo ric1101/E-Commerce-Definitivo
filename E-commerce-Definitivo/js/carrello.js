@@ -115,5 +115,11 @@ checkout.addEventListener('click', function () {
 });
 
 function vaiAlPagamento() {
-    window.location.href = 'http://127.0.0.1:5500/pagamento.html';
+    let carrelloPienoVuoto = JSON.parse(localStorage.getItem('arrayId'));
+    if (carrelloPienoVuoto != '') {
+        checkout.classList.remove('disabled');
+        window.location.href = 'http://127.0.0.1:5500/pagamento.html';
+    } else {
+        checkout.classList.add('disabled');
+    }
 }

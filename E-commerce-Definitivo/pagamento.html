@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -38,8 +38,10 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="./carrello.html">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="position-absolute top-1 start-99 translate-middle badge rounded-pill bg-danger" id="numeroArticoli"></span>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span
+                                    class="position-absolute top-1 start-99 translate-middle badge rounded-pill bg-danger"
+                                    id="numeroArticoli"></span>
                             </a>
                         </li>
                     </ul>
@@ -48,24 +50,37 @@
         </nav>
     </header>
 
+    <!-- <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label">Username</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+          <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
+        </div>
+      </div> -->
+
     <div class="container p-5 d-flex">
-        <form class="row g-3 p-5">
+        <form class="row g-3 p-5 needs-validation" novalidate action="#!">
             <h1>Pagamento</h1>
             <div class="col-md-6">
                 <label for="" class="form-label">Nome</label>
-                <input type="text" class="form-control" placeholder="Nome" aria-label="Nome">
+                <input type="text" class="form-control richiesti" placeholder="Nome" aria-label="Nome" required="">
             </div>
             <div class="col-md-6">
                 <label for="" class="form-label">Cognome</label>
-                <input type="text" class="form-control" placeholder="Cognome" aria-label="Cognome">
+                <input type="text" class="form-control richiesti" placeholder="Cognome" aria-label="Cognome"
+                    required="">
             </div>
             <div class="col-12">
                 <label for="inputIndirizzo" class="form-label">Indirizzo</label>
-                <input type="text" class="form-control" id="inputIndirizzo" placeholder="Via Roma, 123">
+                <input type="text" class="form-control richiesti" id="inputIndirizzo" placeholder="Via Roma, 123"
+                    required="">
             </div>
             <div class="col-md-6">
                 <label for="inputCitta" class="form-label">Città</label>
-                <input type="text" class="form-control" id="inputCitta">
+                <input type="text" class="form-control richiesti" id="inputCitta" placeholder="" required="">
             </div>
             <div class="col-md-4">
                 <label for="inputStato" class="form-label">Stato</label>
@@ -76,64 +91,81 @@
             </div>
             <div class="col-md-2">
                 <label for="inputCap" class="form-label">CAP</label>
-                <input type="text" class="form-control" id="inputCap">
+                <input type="text" class="form-control richiesti" id="inputCap">
             </div>
-            
+
             <div class="row gy-3">
                 <div class="col-md-6">
-                  <label for="cc-name" class="form-label">Name on card</label>
-                  <input type="text" class="form-control" id="cc-name" placeholder="" required="">
-                  <small class="text-muted">Full name as displayed on card</small>
-                  <div class="invalid-feedback">
-                    Name on card is required
-                  </div>
+                    <label for="cc-name" class="form-label">Titolare della carta</label>
+                    <input type="text" class="form-control richiesti" id="cc-name" placeholder="Nome Cognome"
+                        required="">
+                    <small class="text-muted">Nome completo del titolare della carta</small>
+                    <div class="invalid-feedback">
+                        Nome titolare carta richiesto
+                    </div>
                 </div>
-    
+
                 <div class="col-md-6">
-                  <label for="cc-number" class="form-label">Credit card number</label>
-                  <input type="text" class="form-control" id="cc-number" placeholder="" required="">
-                  <div class="invalid-feedback">
-                    Credit card number is required
-                  </div>
+                    <label for="cc-number" class="form-label">Numero della carta</label>
+                    <input type="text" class="form-control richiesti" id="cc-number" placeholder="Numero della carta"
+                        required="">
+                    <div class="invalid-feedback">
+                        Numero della carta richiesto
+                    </div>
                 </div>
-    
+
                 <div class="col-md-3">
-                  <label for="cc-expiration" class="form-label">Expiration</label>
-                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
-                  <div class="invalid-feedback">
-                    Expiration date required
-                  </div>
+                    <label for="cc-scadenza" class="form-label">Scadenza</label>
+                    <input type="text" class="form-control richiesti" id="cc-scadenza" placeholder="MM/YYYY"
+                        required="">
+                    <div class="invalid-feedback">
+                        Data di scadenza richiesta
+                    </div>
                 </div>
-    
+
                 <div class="col-md-3">
-                  <label for="cc-cvv" class="form-label">CVV</label>
-                  <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
-                  <div class="invalid-feedback">
-                    Security code required
-                  </div>
+                    <label for="cc-cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control richiesti" id="cc-cvv" placeholder="***" required>
+                    <div class="invalid-feedback">
+                        CVV richiesto
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-check">
-                      <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
-                      <label class="form-check-label" for="credit">Credit card</label>
+                        <input id="credit" name="paymentMethod" type="radio" class="form-check-input richiesti"
+                            checked="" required="">
+                        <label class="form-check-label" for="credit">Carta di Credito</label>
                     </div>
                     <div class="form-check">
-                      <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
-                      <label class="form-check-label" for="debit">Debit card</label>
+                        <input id="debit" name="paymentMethod" type="radio" class="form-check-input richiesti"
+                            required="">
+                        <label class="form-check-label" for="debit">Carta di Debito</label>
                     </div>
-                    <div class="form-check">
-                      <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
-                      <label class="form-check-label" for="paypal">PayPal</label>
-                    </div>
-                  </div>
-              </div>
+                </div>
+            </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary paga">Paga</button>
             </div>
         </form>
         <div class="container-foto">
             <img src="./img/carrello.png" alt="carrello" class="mt-5">
-            
+
+        </div>
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ordine Confermato</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Grazie per aver acquistato su Amazone!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary close" data-dismiss="modal">Continua ad
+                            acquistare</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -146,7 +178,8 @@
             </li>
         </ul>
         <p class="text-center text-body-secondary">© 2024 Amazone, Inc</p>
-        <p class="text-center text-body-secondary">Riccardo Masci, Francesco Afferrante, Damiano Antonelli, Mattia Ferrusi, Andrea Trapani</p>
+        <p class="text-center text-body-secondary">Riccardo Masci, Francesco Afferrante, Damiano Antonelli, Mattia
+            Ferrusi, Andrea Trapani</p>
     </footer>
 
 
