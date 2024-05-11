@@ -56,7 +56,7 @@
             <div class="col-md-6">
                 <label for="validationCustom01" class="form-label">Nome</label>
                 <input type="text" class="form-control richiesti" id="validationCustom01" placeholder="Nome"
-                    aria-label="Nome" required>
+                    aria-label="Nome" maxLength="58"  required>
                 <div class="invalid-feedback">
                     Nome richiesto
                 </div>
@@ -64,7 +64,7 @@
             <div class="col-md-6">
                 <label for="validationCustom02" class="form-label">Cognome</label>
                 <input type="text" class="form-control richiesti" id="validationCustom02" placeholder="Cognome"
-                    aria-label="Cognome" required>
+                    aria-label="Cognome" maxLength="40" required>
                 <div class="invalid-feedback">
                     Cognome richiesto
                 </div>
@@ -72,14 +72,14 @@
             <div class="col-12">
                 <label for="validationCustom03" class="form-label">Indirizzo</label>
                 <input type="text" class="form-control richiesti" id="validationCustom03" placeholder="Via Roma, 123"
-                    required>
+                maxLength="40" required>
                 <div class="invalid-feedback">
                     Indirizzo richiesto
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom04" class="form-label">Città</label>
-                <input type="text" class="form-control richiesti" id="validationCustom04" placeholder="Roma" required>
+                <input type="text" class="form-control richiesti" id="validationCustom04" placeholder="Roma" maxLength="58" required>
                 <div class="invalid-feedback">
                     Città richiesta
                 </div>
@@ -96,7 +96,7 @@
             </div>
             <div class="col-md-2">
                 <label for="validationCustom06" class="form-label">CAP</label>
-                <input type="text" class="form-control richiesti" id="validationCustom06" placeholder="00139" required>
+                <input type="text" class="form-control richiesti" id="validationCustom06" placeholder="00139" maxLength="5" required>
                 <div class="invalid-feedback">
                     CAP richiesto
                 </div>
@@ -106,7 +106,7 @@
                 <div class="col-md-6">
                     <label for="validationCustom07" class="form-label">Titolare della carta</label>
                     <input type="text" class="form-control richiesti" id="validationCustom07" placeholder="Nome Cognome"
-                        required>
+                    maxLength="50"  required>
                     <small class="text-muted">Nome completo del titolare della carta</small>
                     <div class="invalid-feedback">
                         Nome titolare carta richiesto
@@ -115,8 +115,7 @@
 
                 <div class="col-md-6">
                     <label for="validationCustom08" class="form-label">Numero della carta</label>
-                    <input type="text" class="form-control richiesti" id="validationCustom08" placeholder="Numero della carta"
-                        required>
+                    <input type="text" class="form-control richiesti" id="validationCustom08" placeholder="Numero della carta" maxLength="16" required>
                     <div class="invalid-feedback">
                         Numero della carta richiesto
                     </div>
@@ -125,7 +124,7 @@
                 <div class="col-md-3">
                     <label for="validationCustom09" class="form-label">Scadenza</label>
                     <input type="text" class="form-control richiesti" id="validationCustom09" placeholder="MM/YYYY"
-                        required>
+                    maxLength="7" required>
                     <div class="invalid-feedback">
                         Data di scadenza richiesta
                     </div>
@@ -133,7 +132,7 @@
 
                 <div class="col-md-3">
                     <label for="validationCustom10" class="form-label">CVV</label>
-                    <input type="text" class="form-control richiesti" id="validationCustom10" placeholder="***" required>
+                    <input type="text" class="form-control richiesti" id="validationCustom10" placeholder="***" maxLength="3" required>
                     <div class="invalid-feedback">
                         CVV richiesto
                     </div>

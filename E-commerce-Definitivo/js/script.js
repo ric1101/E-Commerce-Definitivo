@@ -147,7 +147,7 @@ ottieniDati();
               const id = btn.getAttribute('data-id');
               console.log(id);
               localStorage.setItem('info', JSON.stringify(id));
-              window.location.href = 'http://127.0.0.1:5500/info-prodotti.html';
+              window.location.href = 'info-prodotti.html';
           });
       });
   }

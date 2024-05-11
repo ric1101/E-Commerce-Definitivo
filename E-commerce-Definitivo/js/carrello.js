@@ -118,7 +118,7 @@ function vaiAlPagamento() {
     let carrelloPienoVuoto = JSON.parse(localStorage.getItem('arrayId'));
     if (carrelloPienoVuoto != '') {
         checkout.classList.remove('disabled');
-        window.location.href = 'http://127.0.0.1:5500/pagamento.html';
+        window.location.href = 'pagamento.html';
     } else {
         checkout.classList.add('disabled');
     }

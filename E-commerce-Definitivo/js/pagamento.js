@@ -23,7 +23,7 @@ function pagato() {
 function chiusura() {
     
     modal.classList.remove('d-block');
-    window.location.href = 'http://127.0.0.1:5500/index.html';
+    window.location.href = 'index.html';
 }
 
 
@@ -44,22 +44,3 @@ Array.from(forms).forEach(form => {
       }, false)
   })    
 
-// // Example starter JavaScript for disabling form submissions if there are invalid fields
-// (() => {
-//     'use strict'
-  
-//     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//     const forms = document.querySelectorAll('.needs-validation')
-  
-//     // Loop over them and prevent submission
-//     Array.from(forms).forEach(form => {
-//       form.addEventListener('submit', event => {
-//         if (!form.checkValidity()) {
-//           event.preventDefault()
-//           event.stopPropagation()
-//         }
-
-//         form.classList.add('was-validated')
-//       }, false)
-//     })
-//   })()
