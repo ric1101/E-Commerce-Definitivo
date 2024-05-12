@@ -41,8 +41,21 @@
     backdrop-filter: blur(8px);
 }
 
+.container-foto {
+    display: flex;
+}
+
 .container-foto img {
-    width: 100%;
+
+    justify-content: center;
+
+    @media screen and (max-width:1100px){
+       
+        display: none;
+    }    
+
+    
+    
 }
 
 .container{

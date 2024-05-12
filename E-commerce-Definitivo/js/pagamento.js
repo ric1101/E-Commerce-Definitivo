@@ -40,8 +40,28 @@ paga.addEventListener('click', function (event) {
     // Se il form è valido, mostra il modal
     modal.classList.add('d-block');
     pagato();
+    localStorage.removeItem('arrayId');
   } else {
     // Se il form non è valido, mostra gli errori di validazione
     form.classList.add('was-validated');
   }
 });
+
+let arrayCarrello = [];
+let numeroArticoli = document.querySelector('#numeroArticoli');
+let numProdotti = 0;
+
+function contoCarrello() {
+  console.log(numProdotti);
+
+  arrayCarrello = JSON.parse(localStorage.getItem('arrayId'));
+
+  numProdotti = arrayCarrello.length;
+  numeroArticoli.innerHTML = numProdotti;
+
+  if (numProdotti == 0) {
+    numeroArticoli.innerHTML = null;
+  }
+
+}
+contoCarrello();

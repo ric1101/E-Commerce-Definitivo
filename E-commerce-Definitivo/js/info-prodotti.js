@@ -58,7 +58,7 @@ mostraInfoProdotto();
 
 let bottoniCarrello = document.querySelector('.add-to-cart');
 
-
+let arrayId = [];
 
 function inviaAlCarrello() {
     let controlloStorage = JSON.parse(localStorage.getItem('arrayId'));
