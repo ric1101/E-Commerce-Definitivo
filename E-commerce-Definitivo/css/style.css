@@ -91,3 +91,7 @@
     
     }
 }
+
+.add-to-cart:focus {
+    background-color: green;
+}
